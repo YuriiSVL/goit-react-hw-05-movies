@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 import { fetchMoviesById } from 'api-services/fetchMoviesById';
+import { Link } from 'react-router-dom';
 
 const MovieDatails = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
 
-  const baseUrl = 'https://image.tmdb.org/t/p/w500';
+  const baseUrl = 'https://image.tmdb.org/t/p/w500/';
 
   useEffect(() => {
     fetchMoviesById(movieId).then(res => setMovie(res));
   }, [movieId]);
 
   //   console.log(movie.genres.map(genre => genre.name));
+  console.log(`${baseUrl + movie.poster_path}`);
 
   return (
     <div>
@@ -30,6 +32,16 @@ const MovieDatails = () => {
           ))}
         </ul>
       )}
+      <h4>Additional information</h4>
+      <ul>
+        <li>
+          <Link to={'cast'}>Cast</Link>
+        </li>
+        <li>
+          <Link to={'reviwes'}>Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </div>
   );
 };
