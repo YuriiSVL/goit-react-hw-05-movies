@@ -7,6 +7,5 @@ export const fetchMoviesById = async id => {
   const responce = await axios.get(
     `movie/${id}?api_key=${API_KEY}&language=en-US`
   );
-  //   console.log(responce.data);
   return responce.data;
 };
