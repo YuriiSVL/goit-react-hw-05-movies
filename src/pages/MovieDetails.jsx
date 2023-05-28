@@ -22,7 +22,14 @@ const MovieDatails = () => {
       <h2>Overview</h2>
       <p>{movie.overview}</p>
       <h3>Geners</h3>
-      {movie.genres && movie.genres.map(genre => <p>{genre.name}</p>)}
+      <p></p>
+      {movie.genres && (
+        <ul>
+          {movie.genres.map(genre => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
