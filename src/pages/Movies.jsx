@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { fetchMoviesBySearch } from 'api-services/fetchMoviesBySearch';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const searchQuery = searchParams.get('searchQuery') ?? '';
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Movies = () => {
       <>
         <ul>
           {movies.map(movie => (
-            <Link key={movie.id} to={`${movie.id}`}>
+            <Link key={movie.id} to={`${movie.id}`} state={{ from: location }}>
               <li>
                 <img src={baseUrl + movie.poster_path} alt={movie.title} />
                 {movie.title}

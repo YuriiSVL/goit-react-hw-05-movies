@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchMoviesById } from 'api-services/fetchMoviesById';
 import { Link } from 'react-router-dom';
 
 const MovieDatails = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
   const baseUrl = 'https://image.tmdb.org/t/p/w500/';
 
@@ -18,7 +20,7 @@ const MovieDatails = () => {
 
   return (
     <>
-      <button type="button">Go back</button>
+      <Link to={backLinkLocationRef.current}>Go back</Link>
       <div>
         <img
           src={baseUrl + movie.poster_path}

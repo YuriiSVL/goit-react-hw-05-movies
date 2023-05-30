@@ -1,9 +1,10 @@
 import { fetchMoviesByTrend } from 'api-services/fetchMoviesByTrend';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
   useEffect(() => {
     fetchMoviesByTrend().then(res => setMovies(res));
   }, []);
@@ -14,7 +15,11 @@ const Home = () => {
     <>
       <ul>
         {movies.map(movie => (
-          <Link key={movie.id} to={`movies/${movie.id}`}>
+          <Link
+            key={movie.id}
+            to={`movies/${movie.id}`}
+            state={{ from: location }}
+          >
             <li>
               <img src={baseUrl + movie.poster_path} alt={movie.title} />
               {movie.title}
