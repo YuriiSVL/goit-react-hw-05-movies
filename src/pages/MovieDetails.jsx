@@ -17,32 +17,38 @@ const MovieDatails = () => {
   console.log(`${baseUrl + movie.poster_path}`);
 
   return (
-    <div>
-      <img src={baseUrl + movie.poster_path} alt={movie.title || movie.name} />
-      <h1>{movie.title || movie.name}</h1>
-      <p>User score: {Math.round(movie.popularity)}%</p>
-      <h2>Overview</h2>
-      <p>{movie.overview}</p>
-      <h3>Geners</h3>
-      <p></p>
-      {movie.genres && (
+    <>
+      <button type="button">Go back</button>
+      <div>
+        <img
+          src={baseUrl + movie.poster_path}
+          alt={movie.title || movie.name}
+        />
+        <h1>{movie.title || movie.name}</h1>
+        <p>User score: {Math.round(movie.popularity)}%</p>
+        <h2>Overview</h2>
+        <p>{movie.overview}</p>
+        <h3>Geners</h3>
+        <p></p>
+        {movie.genres && (
+          <ul>
+            {movie.genres.map(genre => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </ul>
+        )}
+        <h4>Additional information</h4>
         <ul>
-          {movie.genres.map(genre => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
+          <li>
+            <Link to={'cast'}>Cast</Link>
+          </li>
+          <li>
+            <Link to={'reviwes'}>Reviews</Link>
+          </li>
         </ul>
-      )}
-      <h4>Additional information</h4>
-      <ul>
-        <li>
-          <Link to={'cast'}>Cast</Link>
-        </li>
-        <li>
-          <Link to={'reviwes'}>Reviews</Link>
-        </li>
-      </ul>
-      <Outlet />
-    </div>
+        <Outlet />
+      </div>
+    </>
   );
 };
 
