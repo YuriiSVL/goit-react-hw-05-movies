@@ -8,7 +8,7 @@ const Reviews = () => {
   useEffect(() => {
     fetchMovieReviews(movieId)
       .then(res => setReviews(res))
-      .catch(console.log(Error));
+      .catch(error => console.log(error));
   }, [movieId]);
 
   return (

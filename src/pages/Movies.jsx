@@ -6,42 +6,31 @@ const Movies = () => {
   const [movies, setMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const searchQuery = searchParams.get('searchQuery') ?? '';
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (searchQuery) {
-      fetchMoviesBySearch(searchQuery).then(res => setMovie(res));
+    if (query) {
+      fetchMoviesBySearch(query).then(res => setMovie(res));
     }
-  }, [searchQuery]);
+  }, [query]);
 
-  // const updateQueryString = e => {
-  //   if (e.target.value === '') {
-  //     return setSearchParams({});
-  //   }
-  //   setSearchParams({ searchQuery: e.target.value });
-  // };
-  const baseUrl = 'https://image.tmdb.org/t/p/w500';
+  const baseUrl = 'https://image.tmdb.org/t/p/w500/';
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    // fetchMoviesBySearch(searchQuery).then(res => setMovie(res));
+
     if (form.elements.query.value === '') {
       return setSearchParams({});
     }
-    setSearchParams({ searchQuery: form.elements.query.value });
+    setSearchParams({ query: form.elements.query.value });
     form.reset();
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="query"
-          // value={searchQuery}
-          // onChange={updateQueryString}
-        />
+        <input type="text" name="query" />
         <button type="submit">Search</button>
       </form>
       <>
@@ -49,8 +38,11 @@ const Movies = () => {
           {movies.map(movie => (
             <Link key={movie.id} to={`${movie.id}`} state={{ from: location }}>
               <li>
-                <img src={baseUrl + movie.poster_path} alt={movie.title} />
-                {movie.title}
+                <img
+                  src={movie.poster_path && baseUrl + movie.poster_path}
+                  alt={movie.title}
+                />
+                {movie.title || movie.name}
               </li>
             </Link>
           ))}

@@ -9,7 +9,7 @@ const Home = () => {
     fetchMoviesByTrend().then(res => setMovies(res));
   }, []);
 
-  const baseUrl = 'https://image.tmdb.org/t/p/w500';
+  const baseUrl = 'https://image.tmdb.org/t/p/w500/';
 
   return (
     <>
@@ -22,8 +22,11 @@ const Home = () => {
             state={{ from: location }}
           >
             <li>
-              <img src={baseUrl + movie.poster_path} alt={movie.title} />
-              {movie.title}
+              <img
+                src={movie.poster_path && baseUrl + movie.poster_path}
+                alt={movie.title}
+              />
+              {movie.title || movie.name}
             </li>
           </Link>
         ))}

@@ -9,14 +9,17 @@ const Cast = () => {
   useEffect(() => {
     fetchMoviesCast(movieId)
       .then(res => setCast(res))
-      .catch(console.log(Error));
+      .catch(error => console.log(error));
   }, [movieId]);
 
   return (
     <ul>
       {cast.map(actor => (
         <li key={actor.id}>
-          <img src={baseUrl + actor.profile_path} alt={actor.name} />
+          <img
+            src={actor.profile_path && baseUrl + actor.profile_path}
+            alt={actor.name}
+          />
           <h2>{actor.name}</h2>
           <p>Charecter: {actor.character}</p>
         </li>

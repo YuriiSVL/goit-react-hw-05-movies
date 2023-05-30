@@ -15,15 +15,12 @@ const MovieDatails = () => {
     fetchMoviesById(movieId).then(res => setMovie(res));
   }, [movieId]);
 
-  //   console.log(movie.genres.map(genre => genre.name));
-  console.log(`${baseUrl + movie.poster_path}`);
-
   return (
     <>
       <Link to={backLinkLocationRef.current}>Go back</Link>
       <div>
         <img
-          src={baseUrl + movie.poster_path}
+          src={movie.poster_path && baseUrl + movie.poster_path}
           alt={movie.title || movie.name}
         />
         <h1>{movie.title || movie.name}</h1>
