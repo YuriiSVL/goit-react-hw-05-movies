@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchMoviesBySearch } from 'api-services/fetchMoviesBySearch';
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import MovieList from 'components/movieList/MovieList';
 import SearchForm from 'components/searchForm/SearchForm';
 
@@ -16,8 +16,6 @@ const Movies = () => {
     }
   }, [query]);
 
-  const baseUrl = 'https://image.tmdb.org/t/p/w500/';
-
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -32,26 +30,7 @@ const Movies = () => {
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {/* <form onSubmit={handleSubmit}>
-        <input type="text" name="query" />
-        <button type="submit">Search</button>
-      </form> */}
-      <>
-        <MovieList movies={movies} location={location} />
-        {/* <ul>
-          {movies.map(movie => (
-            <Link key={movie.id} to={`${movie.id}`} state={{ from: location }}>
-              <li>
-                <img
-                  src={movie.poster_path && baseUrl + movie.poster_path}
-                  alt={movie.title}
-                />
-                {movie.title || movie.name}
-              </li>
-            </Link>
-          ))}
-        </ul> */}
-      </>
+      <MovieList movies={movies} location={location} />
     </>
   );
 };

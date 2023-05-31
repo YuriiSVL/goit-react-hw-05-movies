@@ -1,6 +1,6 @@
 import { fetchMoviesByTrend } from 'api-services/fetchMoviesByTrend';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import MovieList from 'components/movieList/MovieList';
 
 const Home = () => {
@@ -10,30 +10,10 @@ const Home = () => {
     fetchMoviesByTrend().then(res => setMovies(res));
   }, []);
 
-  const baseUrl = 'https://image.tmdb.org/t/p/w500/';
-
   return (
     <>
       <h1>Trending today</h1>
       <MovieList movies={movies} location={location} path={`movies/`} />
-
-      {/* <ul>
-        {movies.map(movie => (
-          <Link
-            key={movie.id}
-            to={`movies/${movie.id}`}
-            state={{ from: location }}
-          >
-            <li>
-              <img
-                src={movie.poster_path && baseUrl + movie.poster_path}
-                alt={movie.title}
-              />
-              {movie.title || movie.name}
-            </li>
-          </Link>
-        ))}
-      </ul> */}
     </>
   );
 };
