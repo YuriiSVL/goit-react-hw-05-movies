@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import css from 'components/goBackButton/GoBackButton.module.css';
 
@@ -7,6 +8,10 @@ const GoBackButton = ({ backLinkLocationRef }) => {
       Go back
     </Link>
   );
+};
+
+GoBackButton.propTypes = {
+  backLinkLocationRef: PropTypes.object,
 };
 
 export default GoBackButton;

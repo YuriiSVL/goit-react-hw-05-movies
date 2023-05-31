@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { NavLink, Outlet } from 'react-router-dom';
 import css from 'components/movieDetails/MovieDetails.module.css';
 import { Suspense } from 'react';
@@ -46,6 +47,10 @@ const MovieDatails = ({ movie }) => {
       </Suspense>
     </>
   );
+};
+
+MovieDatails.propTypes = {
+  movie: PropTypes.object,
 };
 
 export default MovieDatails;
