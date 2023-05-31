@@ -8,8 +8,8 @@ import Layout from './layout/Layout';
 import { lazy } from 'react';
 
 export const App = () => {
-  const Home = lazy(() => import('../pages/HomePage'));
-  const Movies = lazy(() => import('../pages/MoviesPage'));
+  const HomePage = lazy(() => import('../pages/HomePage'));
+  const MoviesPage = lazy(() => import('../pages/MoviesPage'));
   const MovieDetailsPage = lazy(() => import('../pages/MovieDetailsPage'));
   const Cast = lazy(() => import('../components/cast/Cast'));
   const Reviews = lazy(() => import('../components/reviews/Reviews'));
@@ -20,7 +20,7 @@ export const App = () => {
           index
           element={
             <div>
-              <Home />
+              <HomePage />
             </div>
           }
         />
@@ -28,7 +28,7 @@ export const App = () => {
           path="movies"
           element={
             <div>
-              <Movies />
+              <MoviesPage />
             </div>
           }
         />

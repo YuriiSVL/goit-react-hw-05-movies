@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import css from 'components/searchForm/SearchForm.module.css';
 
-const SearchForm = ({ handleSubmit }) => {
+const SearchForm = ({ onSubmit }) => {
   return (
-    <form onSubmit={handleSubmit} className={css.form}>
+    <form onSubmit={onSubmit} className={css.form}>
       <input type="text" name="query" className={css.searchField} />
       <button type="submit" className={css.searchButton}>
         Search
@@ -13,7 +13,7 @@ const SearchForm = ({ handleSubmit }) => {
 };
 
 SearchForm.propTypes = {
-  handleSubmit: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default SearchForm;

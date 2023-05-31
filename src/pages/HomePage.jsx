@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import MovieList from 'components/movieList/MovieList';
 
-const Home = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
   useEffect(() => {
@@ -18,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
