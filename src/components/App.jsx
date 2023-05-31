@@ -8,8 +8,8 @@ import Layout from './layout/Layout';
 import { lazy } from 'react';
 
 export const App = () => {
-  const Home = lazy(() => import('../pages/Home'));
-  const Movies = lazy(() => import('../pages/Movies'));
+  const Home = lazy(() => import('../pages/HomePage'));
+  const Movies = lazy(() => import('../pages/MoviesPage'));
   const MovieDetailsPage = lazy(() => import('../pages/MovieDetailsPage'));
   const Cast = lazy(() => import('../components/cast/Cast'));
   const Reviews = lazy(() => import('../components/reviews/Reviews'));
