@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import css from 'components/movieDetails/MovieDetails.module.css';
+import { Suspense } from 'react';
 
 const MovieDatails = ({ movie }) => {
   const baseUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -40,7 +41,9 @@ const MovieDatails = ({ movie }) => {
           </ul>
         </div>
       </div>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

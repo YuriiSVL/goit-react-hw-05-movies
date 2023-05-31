@@ -4,7 +4,7 @@ import { fetchMoviesById } from 'api-services/fetchMoviesById';
 import MovieDetails from 'components/movieDetails/MovieDetails';
 import GoBackButton from 'components/goBackButton/GoBackButton';
 
-const MovieDatails = () => {
+const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
@@ -22,4 +22,4 @@ const MovieDatails = () => {
   );
 };
 
-export default MovieDatails;
+export default MovieDetailsPage;
