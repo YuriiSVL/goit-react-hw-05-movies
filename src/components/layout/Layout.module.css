@@ -1,0 +1,16 @@
+.header {
+  padding: 10px 15px;
+  background-color: rgba(120, 199, 150, 0.74);
+  margin-bottom: 30px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}

@@ -1,6 +1,7 @@
 import { fetchMoviesByTrend } from 'api-services/fetchMoviesByTrend';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import MovieList from 'components/movieList/MovieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -14,7 +15,9 @@ const Home = () => {
   return (
     <>
       <h1>Trending today</h1>
-      <ul>
+      <MovieList movies={movies} location={location} path={`movies/`} />
+
+      {/* <ul>
         {movies.map(movie => (
           <Link
             key={movie.id}
@@ -30,7 +33,7 @@ const Home = () => {
             </li>
           </Link>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 };

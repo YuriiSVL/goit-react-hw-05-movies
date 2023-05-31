@@ -1,19 +1,14 @@
 .list {
-  margin-top: 50px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+
+  list-style: none;
 }
 
 .item {
+  display: block;
   max-width: 200px;
-}
-
-.actorTitle {
-  text-align: center;
-}
-
-.actorText {
-  text-align: center;
 }

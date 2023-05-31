@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  gap: 30px;
+  padding: 10px 15px;
+}
+
+.movieInformation {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.aditionalInformationLink {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.genreList {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}

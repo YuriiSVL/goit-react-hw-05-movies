@@ -1,6 +1,7 @@
 import { fetchMovieReviews } from 'api-services/fetchMovieReviews';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import css from 'components/reviews/Reviews.module.css';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -12,7 +13,7 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {reviews.length > 0 ? (
         reviews.map(review => (
           <li key={review.id}>

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { fetchMoviesById } from 'api-services/fetchMoviesById';
 import { Link } from 'react-router-dom';
+import MovieDetails from 'components/movieDetails/MovieDetails';
+import GoBackButton from 'components/goBackButton/GoBackButton';
 
 const MovieDatails = () => {
   const [movie, setMovie] = useState({});
@@ -17,8 +19,10 @@ const MovieDatails = () => {
 
   return (
     <>
-      <Link to={backLinkLocationRef.current}>Go back</Link>
-      <div>
+      <GoBackButton backLinkLocationRef={backLinkLocationRef.current} />
+      {/* <Link to={backLinkLocationRef.current}>Go back</Link> */}
+      <MovieDetails movie={movie} />
+      {/* <div>
         <img
           src={movie.poster_path && baseUrl + movie.poster_path}
           alt={movie.title || movie.name}
@@ -46,7 +50,7 @@ const MovieDatails = () => {
           </li>
         </ul>
         <Outlet />
-      </div>
+      </div> */}
     </>
   );
 };
